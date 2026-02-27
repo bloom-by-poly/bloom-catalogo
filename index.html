@@ -9,7 +9,6 @@
     body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--dark); background-color: var(--bege); margin: 0; }
     header { text-align: center; padding: 60px 20px; background: #fff; border-bottom: 1px solid #eee; }
     header h1 { font-size: 3rem; margin: 0; letter-spacing: 4px; font-weight: 300; text-transform: uppercase; }
-    header p { margin: 0; color: #888; letter-spacing: 2px; }
     .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
     .card { background: #fff; border-radius: 30px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; position: relative; }
     .gallery-wrapper { position: relative; width: 100%; height: 350px; border-radius: 25px; margin-bottom: 15px; overflow: hidden; background: #f9f9f9; }
@@ -20,7 +19,6 @@
     .animar:hover .gallery-container { animation: hover-slide-3 7s ease-in-out infinite; }
     @keyframes hover-slide-3 { 0%, 20%, 100% { transform: translateX(0); } 30%, 50% { transform: translateX(-100%); } 60%, 80% { transform: translateX(-200%); } }
     .opcoes-produto { margin: 10px 0 20px 0; text-align: left; }
-    .opcoes-produto label { font-size: 0.7rem; color: var(--ouro); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 5px; }
     .select-bloom { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 12px; background: #fdfdfd; font-family: inherit; font-size: 0.85rem; color: #555; outline: none; }
     .preco { display: block; font-size: 1.3rem; font-weight: bold; color: var(--ouro); margin-bottom: 15px; }
     .btn { display: block; padding: 12px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
@@ -39,7 +37,7 @@
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/1_CaixaMadeira.jpg"></div></div>
     <h3>Bouquet em Caixa de Madeira</h3>
     <span class="preco">14,95€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Madeira (Ref: BOUQ-MAD-01)" class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Madeira" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card animar" id="card-caixa">
@@ -54,15 +52,13 @@
     </div>
     <h3>Bouquet em Caixa de Cartão</h3>
     <div class="opcoes-produto">
-      <label>Tamanho:</label>
-      <select class="select-bloom" onchange="updateProd('caixa', this.value)">
-        <option value="Selecionar" selected>Selecionar</option>
-        <option value="Medio">Médio</option>
-        <option value="Pequeno">Pequeno</option>
+      <select class="select-bloom" onchange="mudarFoto('galeria-caixa', this.value, 'card-caixa')">
+        <option value="0">Selecionar / Médio</option>
+        <option value="2">Pequeno</option>
       </select>
     </div>
     <span class="preco">17,95€</span>
-    <a id="btn-caixa" href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Cartão" class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Cartão" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card animar" id="card-jarra">
@@ -77,15 +73,13 @@
     </div>
     <h3>Bouquet em Jarra</h3>
     <div class="opcoes-produto">
-      <label>Tipo:</label>
-      <select class="select-bloom" onchange="updateProd('jarra', this.value)">
-        <option value="Selecionar" selected>Selecionar</option>
-        <option value="Normal">Normal</option>
-        <option value="Personalizada">Personalizada</option>
+      <select class="select-bloom" onchange="mudarFoto('galeria-jarra', this.value, 'card-jarra')">
+        <option value="0">Selecionar / Normal</option>
+        <option value="2">Personalizada</option>
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a id="btn-jarra" href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Jarra" class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Jarra" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card animar" id="card-vaso">
@@ -100,73 +94,51 @@
     </div>
     <h3>Bouquet Miniatura</h3>
     <div class="opcoes-produto">
-      <label>Suporte:</label>
-      <select class="select-bloom" onchange="updateProd('vaso', this.value)">
-        <option value="Selecionar" selected>Selecionar</option>
-        <option value="Vaso">Vaso metálico</option>
-        <option value="Cesto">Cesto</option>
+      <select class="select-bloom" onchange="mudarFoto('galeria-vaso', this.value, 'card-vaso')">
+        <option value="0">Selecionar / Vaso</option>
+        <option value="1">Cesto</option>
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a id="btn-vaso" href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet Miniatura" class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet Miniatura" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/5_TacaCeramica.jpg"></div></div>
     <h3>Vela em Taça Cerâmica</h3>
     <span class="preco">10,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar a Vela em Taça (Ref: VELA-TACA-CER)" class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar a Vela em Taça Cerâmica" class="btn">ENCOMENDAR</a>
   </div>
+
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/6_FloresRamo.jpg"></div></div>
     <h3>Ramos de Flores</h3>
     <span class="preco">5,00€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar Ramos de Flores (Ref: RAMO-FLOR-IND)" class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar Ramos de Flores" class="btn">ENCOMENDAR</a>
   </div>
+
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/7_VelasIndividuaisPers.jpg"></div></div>
-    <h3>Velas Individuais Personalizáveis</h3>
-    <span class="preco">Sob consulta</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero informações sobre Velas Personalizadas (Ref: VELA-IND-PERS)" class="btn">ENCOMENDAR</a>
+    <h3>Velas Personalizáveis</h3>
+    <span class="preco">Preço sob consulta</span>
+    <a href="https://wa.me/351963404327?text=Olá! Quero informações sobre Velas Personalizadas" class="btn">ENCOMENDAR</a>
   </div>
 </main>
 
 <footer>
-  <p>WhatsApp: <strong>+351 963 404 327</strong></p>
-  <a href="https://www.instagram.com/poly.bloom27" target="_blank" style="color:var(--dark); font-weight:bold;">@poly.bloom27</a>
+  <p>WhatsApp: +351 963 404 327 | Instagram: @poly.bloom27</p>
 </footer>
 
 <script>
-  const wa = "https://wa.me/351963404327?text=Olá! Quero encomendar o ";
-
   function manualNav(id, dir) {
     const g = document.getElementById(id);
-    const card = g.closest('.card');
-    card.classList.remove('animar');
-    let t = g.style.transform.replace('translateX(', '').replace('%)', '') || 0;
-    let i = Math.abs(t / 100);
-    let n = (i + dir + 3) % 3;
-    g.style.transform = `translateX(-${n * 100}%)`;
+    g.closest('.card').classList.remove('animar');
+    let i = Math.abs((parseInt(g.style.transform.replace('translateX(-', '').replace('%)', '')) || 0) / 100);
+    g.style.transform = `translateX(-${((i + dir + 3) % 3) * 100}%)`;
   }
-
-  function updateProd(type, val) {
-    const g = document.getElementById('galeria-' + type);
-    const b = document.getElementById('btn-' + type);
-    const c = document.getElementById('card-' + type);
-    c.classList.remove('animar');
-
-    if (type === 'caixa') {
-      if (val === 'Pequeno') { g.style.transform = 'translateX(-200%)'; b.href = wa + "Bouquet Caixa Cartão Pequeno (Ref: BOUQ-CART-PEQ)"; }
-      else { g.style.transform = 'translateX(0)'; b.href = wa + "Bouquet Caixa Cartão Médio (Ref: BOUQ-CART-MED)"; if(val==='Selecionar') c.classList.add('animar'); }
-    }
-    if (type === 'jarra') {
-      if (val === 'Personalizada') { g.style.transform = 'translateX(-200%)'; b.href = wa + "Bouquet Jarra Personalizada (Ref: BOUQ-JAR-PERS)"; }
-      else { g.style.transform = 'translateX(0)'; b.href = wa + "Bouquet Jarra Normal (Ref: BOUQ-JAR-NORM)"; if(val==='Selecionar') c.classList.add('animar'); }
-    }
-    if (type === 'vaso') {
-      if (val === 'Cesto') { g.style.transform = 'translateX(-100%)'; b.href = wa + "Bouquet Miniatura Cesto (Ref: MINI-CESTO-ART)"; }
-      else { g.style.transform = 'translateX(0)'; b.href = wa + "Bouquet Miniatura Vaso (Ref: MINI-VASO-MET)"; if(val==='Selecionar') c.classList.add('animar'); }
-    }
+  function mudarFoto(id, val, cardId) {
+    document.getElementById(cardId).classList.remove('animar');
+    document.getElementById(id).style.transform = `translateX(-${val * 100}%)`;
   }
 </script>
 </body>
