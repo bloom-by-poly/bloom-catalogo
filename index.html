@@ -3,62 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bloom by Poly | Catálogo de Produtos</title>
+  <title>Bloom by Poly | Catálogo Oficial</title>
   <style>
-    /* --- ESTILO GERAL --- */
     :root { --ouro: #b8926a; --bege: #fdfaf8; --dark: #333; }
-    
     body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--dark); background-color: var(--bege); margin: 0; }
-    
     header { text-align: center; padding: 60px 20px; background: #fff; border-bottom: 1px solid #eee; }
     header h1 { font-size: 3rem; margin: 0; letter-spacing: 4px; font-weight: 300; text-transform: uppercase; }
     header p { margin: 0; color: #888; letter-spacing: 2px; }
-
     .sobre { max-width: 800px; margin: 30px auto; padding: 0 20px; text-align: center; }
     .sobre h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-    .sobre p { font-size: 1.05rem; color: #555; }
-
-    /* --- CATÁLOGO --- */
     .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
-
-    .card { background: #fff; border-radius: 30px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s ease; position: relative; }
+    .card { background: #fff; border-radius: 30px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: 0.3s; }
     .card:hover { transform: translateY(-5px); }
-
-    /* --- GALERIA --- */
     .gallery-wrapper { position: relative; width: 100%; height: 350px; border-radius: 25px; margin-bottom: 15px; overflow: hidden; background: #f9f9f9; }
     .gallery-container { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
     .gallery-container img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; border-radius: 25px; }
-
-    /* Setas */
-    .nav-btn {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.8); border: none; width: 35px; height: 35px;
-      border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--ouro); z-index: 10;
-      display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+    .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.8); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--ouro); z-index: 10; display: flex; align-items: center; justify-content: center; }
     .prev { left: 10px; } .next { right: 10px; }
-
-    /* Animação */
     .animar:hover .gallery-container { animation: hover-slide-3 7s ease-in-out infinite; }
-    @keyframes hover-slide-3 {
-      0%, 20%, 100% { transform: translateX(0); }
-      30%, 50% { transform: translateX(-100%); }
-      60%, 80% { transform: translateX(-200%); }
-    }
-
-    /* --- OPÇÕES E BOTÕES --- */
+    @keyframes hover-slide-3 { 0%, 20%, 100% { transform: translateX(0); } 30%, 50% { transform: translateX(-100%); } 60%, 80% { transform: translateX(-200%); } }
     .opcoes-produto { margin: 10px 0 20px 0; text-align: left; }
     .opcoes-produto label { font-size: 0.7rem; color: var(--ouro); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 5px; }
-    .select-bloom { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 12px; background: #fdfdfd; font-family: inherit; font-size: 0.85rem; color: #555; outline: none; cursor: pointer; }
-
+    .select-bloom { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 12px; background: #fdfdfd; font-family: inherit; font-size: 0.85rem; color: #555; outline: none; }
     .preco { display: block; font-size: 1.3rem; font-weight: bold; color: var(--ouro); margin-bottom: 15px; }
-    .btn { display: block; padding: 12px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 50px; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
-    .btn:hover { background: var(--ouro); }
-
-    /* --- FOOTER --- */
+    .btn { display: block; padding: 12px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
     footer { text-align: center; padding: 60px 20px; background: #fff; border-top: 1px solid #eee; margin-top: 40px; }
-    footer h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
-    .insta-link { color: var(--dark); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--ouro); }
   </style>
 </head>
 <body>
@@ -77,7 +46,7 @@
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/1_CaixaMadeira.jpg"></div></div>
     <h3>Bouquet em Caixa de Madeira</h3>
     <span class="preco">14,95€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Madeira." class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-caixa" class="card animar">
@@ -100,7 +69,7 @@
       </select>
     </div>
     <span class="preco">17,95€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Cartão." class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-jarra" class="card animar">
@@ -119,11 +88,11 @@
       <select class="select-bloom" onchange="mudarFotoJarra(this.value)">
         <option value="Selecionar" selected>Selecionar</option>
         <option value="Normal">Normal</option>
-        <option value="Personalizada">Personalizada (Parceria Luís Chaves)</option>
+        <option value="Personalizada">Personalizada</option>
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Jarra." class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-vaso" class="card animar">
@@ -146,70 +115,63 @@
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet Miniatura." class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/5_TacaCeramica.jpg"></div></div>
     <h3>Vela em Taça Cerâmica</h3>
     <span class="preco">10,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar a Vela em Taça Cerâmica." class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR</a>
   </div>
+
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/6_FloresRamo.jpg"></div></div>
     <h3>Ramos de Flores</h3>
     <span class="preco">5,00€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar Ramos de Flores." class="btn">ENCOMENDAR</a>
+    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR</a>
+  </div>
+
+  <div class="card">
+    <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/7_VelasIndividuaisPers.jpg"></div></div>
+    <h3>Velas Individuais Personalizáveis</h3>
+    <span class="preco">Preço sob consulta</span>
+    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR</a>
   </div>
 </main>
 
 <footer>
   <h4>Contacte-nos</h4>
-  <p>Ficou com dúvidas ou pretende algo personalizado?</p>
-  <p>WhatsApp: <strong>+351 963 404 327</strong></p>
-  <p>Email: <strong>poly.bloom27@gmail.com</strong></p>
-  <a href="https://www.instagram.com/poly.bloom27" target="_blank" class="insta-link">@poly.bloom27</a>
+  <p>WhatsApp: <strong>+351 963 404 327</strong> | Email: <strong>poly.bloom27@gmail.com</strong></p>
+  <a href="https://www.instagram.com/poly.bloom27" target="_blank" style="color:var(--dark); font-weight:bold;">@poly.bloom27</a>
 </footer>
 
 <script>
-  // Função para as setas funcionarem
   function moveGallery(id, direction) {
     const galeria = document.getElementById(id);
     const card = galeria.closest('.card');
     card.classList.remove('animar');
-    
     let currentTransform = galeria.style.transform.replace('translateX(', '').replace('%)', '') || 0;
     let index = Math.abs(currentTransform / 100);
-    
-    let newIndex = index + direction;
-    if (newIndex < 0) newIndex = 2;
-    if (newIndex > 2) newIndex = 0;
-    
+    let newIndex = (index + direction + 3) % 3;
     galeria.style.transform = `translateX(-${newIndex * 100}%)`;
   }
-
-  // Funções dos selects
   function mudarFotoCaixa(v) {
-    const g = document.getElementById('galeria-caixa');
-    const c = document.getElementById('card-caixa');
+    const g = document.getElementById('galeria-caixa'); const c = document.getElementById('card-caixa');
     c.classList.remove('animar');
     if(v==="Selecionar") { c.classList.add('animar'); g.style.transform="translateX(0)"; }
     else if(v==="Pequeno") g.style.transform="translateX(-200%)";
     else g.style.transform="translateX(0)";
   }
-
   function mudarFotoJarra(v) {
-    const g = document.getElementById('galeria-jarra');
-    const c = document.getElementById('card-jarra');
+    const g = document.getElementById('galeria-jarra'); const c = document.getElementById('card-jarra');
     c.classList.remove('animar');
     if(v==="Selecionar") { c.classList.add('animar'); g.style.transform="translateX(0)"; }
     else if(v==="Personalizada") g.style.transform="translateX(-200%)";
     else g.style.transform="translateX(0)";
   }
-
   function mudarFotoVaso(v) {
-    const g = document.getElementById('galeria-vaso');
-    const c = document.getElementById('card-vaso');
+    const g = document.getElementById('galeria-vaso'); const c = document.getElementById('card-vaso');
     c.classList.remove('animar');
     if(v==="Selecionar") { c.classList.add('animar'); g.style.transform="translateX(0)"; }
     else if(v==="Cesto") g.style.transform="translateX(-100%)";
@@ -218,5 +180,3 @@
 </script>
 </body>
 </html>
-
-
