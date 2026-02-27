@@ -46,7 +46,7 @@
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/1_CaixaMadeira.jpg"></div></div>
     <h3>Bouquet em Caixa de Madeira</h3>
     <span class="preco">14,95€</span>
-    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Madeira (Ref: BOUQ-MAD-01)" class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-caixa" class="card animar">
@@ -62,14 +62,14 @@
     <h3>Bouquet em Caixa de Cartão</h3>
     <div class="opcoes-produto">
       <label>Tamanho:</label>
-      <select class="select-bloom" onchange="mudarFotoCaixa(this.value)">
+      <select id="sel-caixa" class="select-bloom" onchange="mudarFotoCaixa(this.value)">
         <option value="Selecionar" selected>Selecionar</option>
         <option value="Medio">Médio</option>
         <option value="Pequeno">Pequeno</option>
       </select>
     </div>
     <span class="preco">17,95€</span>
-    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a id="btn-caixa" href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Cartão" class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-jarra" class="card animar">
@@ -85,14 +85,14 @@
     <h3>Bouquet em Jarra</h3>
     <div class="opcoes-produto">
       <label>Tipo de Jarra:</label>
-      <select class="select-bloom" onchange="mudarFotoJarra(this.value)">
+      <select id="sel-jarra" class="select-bloom" onchange="mudarFotoJarra(this.value)">
         <option value="Selecionar" selected>Selecionar</option>
         <option value="Normal">Normal</option>
         <option value="Personalizada">Personalizada</option>
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a id="btn-jarra" href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Jarra" class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-vaso" class="card animar">
@@ -108,45 +108,47 @@
     <h3>Bouquet Miniatura</h3>
     <div class="opcoes-produto">
       <label>Suporte:</label>
-      <select class="select-bloom" onchange="mudarFotoVaso(this.value)">
+      <select id="sel-vaso" class="select-bloom" onchange="mudarFotoVaso(this.value)">
         <option value="Selecionar" selected>Selecionar</option>
         <option value="Vaso">Vaso metálico</option>
         <option value="Cesto">Cesto</option>
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a id="btn-vaso" href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet Miniatura" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/5_TacaCeramica.jpg"></div></div>
     <h3>Vela em Taça Cerâmica</h3>
     <span class="preco">10,90€</span>
-    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar a Vela em Taça Cerâmica (Ref: VELA-TACA-CER)" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/6_FloresRamo.jpg"></div></div>
     <h3>Ramos de Flores</h3>
     <span class="preco">5,00€</span>
-    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar Ramos de Flores (Ref: RAMO-FLOR-IND)" class="btn">ENCOMENDAR</a>
   </div>
 
   <div class="card">
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/7_VelasIndividuaisPers.jpg"></div></div>
     <h3>Velas Individuais Personalizáveis</h3>
     <span class="preco">Preço sob consulta</span>
-    <a href="https://wa.me/351963404327" class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero informações sobre as Velas Individuais Personalizáveis (Ref: VELA-IND-PERS)" class="btn">ENCOMENDAR</a>
   </div>
 </main>
 
 <footer>
   <h4>Contacte-nos</h4>
   <p>WhatsApp: <strong>+351 963 404 327</strong> | Email: <strong>poly.bloom27@gmail.com</strong></p>
-  <a href="https://www.instagram.com/poly.bloom27" target="_blank" style="color:var(--dark); font-weight:bold;">Seguir no Instagram @poly.bloom27</a>
+  <a href="https://www.instagram.com/poly.bloom27" target="_blank" style="color:var(--dark); font-weight:bold;">@poly.bloom27</a>
 </footer>
 
 <script>
+  const baseLink = "https://wa.me/351963404327?text=Olá! Quero encomendar o ";
+
   function moveGallery(id, direction) {
     const galeria = document.getElementById(id);
     const card = galeria.closest('.card');
@@ -156,26 +158,47 @@
     let newIndex = (index + direction + 3) % 3;
     galeria.style.transform = `translateX(-${newIndex * 100}%)`;
   }
+
   function mudarFotoCaixa(v) {
     const g = document.getElementById('galeria-caixa'); const c = document.getElementById('card-caixa');
+    const b = document.getElementById('btn-caixa');
     c.classList.remove('animar');
-    if(v==="Selecionar") { c.classList.add('animar'); g.style.transform="translateX(0)"; }
-    else if(v==="Pequeno") g.style.transform="translateX(-200%)";
-    else g.style.transform="translateX(0)";
+    if(v==="Pequeno") { 
+        g.style.transform="translateX(-200%)"; 
+        b.href = baseLink + "Bouquet em Caixa de Cartão Pequeno (Ref: BOUQ-CART-PEQ)";
+    } else { 
+        g.style.transform="translateX(0)";
+        b.href = baseLink + "Bouquet em Caixa de Cartão Médio (Ref: BOUQ-CART-MED)";
+        if(v==="Selecionar") c.classList.add('animar');
+    }
   }
+
   function mudarFotoJarra(v) {
     const g = document.getElementById('galeria-jarra'); const c = document.getElementById('card-jarra');
+    const b = document.getElementById('btn-jarra');
     c.classList.remove('animar');
-    if(v==="Selecionar") { c.classList.add('animar'); g.style.transform="translateX(0)"; }
-    else if(v==="Personalizada") g.style.transform="translateX(-200%)";
-    else g.style.transform="translateX(0)";
+    if(v==="Personalizada") { 
+        g.style.transform="translateX(-200%)"; 
+        b.href = baseLink + "Bouquet em Jarra Personalizada (Ref: BOUQ-JAR-PERS)";
+    } else { 
+        g.style.transform="translateX(0)";
+        b.href = baseLink + "Bouquet em Jarra Normal (Ref: BOUQ-JAR-NORM)";
+        if(v==="Selecionar") c.classList.add('animar');
+    }
   }
+
   function mudarFotoVaso(v) {
     const g = document.getElementById('galeria-vaso'); const c = document.getElementById('card-vaso');
+    const b = document.getElementById('btn-vaso');
     c.classList.remove('animar');
-    if(v==="Selecionar") { c.classList.add('animar'); g.style.transform="translateX(0)"; }
-    else if(v==="Cesto") g.style.transform="translateX(-100%)";
-    else g.style.transform="translateX(0)";
+    if(v==="Cesto") { 
+        g.style.transform="translateX(-100%)"; 
+        b.href = baseLink + "Bouquet Miniatura Cesto (Ref: MINI-CESTO-ART)";
+    } else { 
+        g.style.transform="translateX(0)";
+        b.href = baseLink + "Bouquet Miniatura Vaso (Ref: MINI-VASO-MET)";
+        if(v==="Selecionar") c.classList.add('animar');
+    }
   }
 </script>
 </body>
