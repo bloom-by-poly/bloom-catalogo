@@ -3,72 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Bloom by Poly | Velas Artesanais & Decoração</title>
-  <meta name="description" content="Catálogo exclusivo de velas artesanais e bouquets decorativos. Peças únicas criadas para elevar o seu ambiente.">
-  <link rel="icon" href="Fotos/favicon.ico" type="image/x-icon">
-
+  <title>Bloom by Poly | Catálogo de Produtos</title>
   <style>
-    /* --- CONFIGURAÇÕES BASE --- */
+    /* --- ESTILO GERAL --- */
     :root { --ouro: #b8926a; --bege: #fdfaf8; --dark: #333; }
     
-    body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--dark); background-color: var(--bege); margin: 0; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--dark); background-color: var(--bege); margin: 0; }
     
     header { text-align: center; padding: 60px 20px; background: #fff; border-bottom: 1px solid #eee; }
-    header h1 { font-size: 3.5rem; margin: 0; letter-spacing: 6px; font-weight: 300; text-transform: uppercase; }
-    header p { margin: 5px 0; color: #888; letter-spacing: 3px; font-style: italic; }
+    header h1 { font-size: 3rem; margin: 0; letter-spacing: 4px; font-weight: 300; text-transform: uppercase; }
+    header p { margin: 0; color: #888; letter-spacing: 2px; }
 
-    .sobre { max-width: 750px; margin: 30px auto; padding: 0 20px; text-align: center; }
-    .sobre h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 0.9rem; }
+    .sobre { max-width: 800px; margin: 30px auto; padding: 0 20px; text-align: center; }
+    .sobre h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
     .sobre p { font-size: 1.05rem; color: #555; }
 
     /* --- CATÁLOGO --- */
-    .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 40px; max-width: 1300px; margin: 0 auto; }
+    .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
 
-    .card { background: #fff; border-radius: 40px; padding: 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(184, 146, 106, 0.15); }
+    .card { background: #fff; border-radius: 30px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s ease; position: relative; }
+    .card:hover { transform: translateY(-5px); }
 
     /* --- GALERIA --- */
-    .gallery-wrapper { position: relative; width: 100%; height: 380px; border-radius: 30px; margin-bottom: 20px; overflow: hidden; background: #fdfdfd; }
-    .gallery-container { display: flex; width: 100%; height: 100%; transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); will-change: transform; }
-    .gallery-container img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; border-radius: 30px; pointer-events: none; }
+    .gallery-wrapper { position: relative; width: 100%; height: 350px; border-radius: 25px; margin-bottom: 15px; overflow: hidden; background: #f9f9f9; }
+    .gallery-container { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
+    .gallery-container img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; border-radius: 25px; }
 
-    /* Setas de Navegação */
+    /* Setas */
     .nav-btn {
       position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9); border: none; width: 42px; height: 42px;
-      border-radius: 50%; cursor: pointer; font-size: 20px; color: var(--ouro); z-index: 10;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
+      background: rgba(255, 255, 255, 0.8); border: none; width: 35px; height: 35px;
+      border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--ouro); z-index: 10;
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .nav-btn:hover { background: var(--ouro); color: #fff; }
-    .prev { left: 15px; } .next { right: 15px; }
+    .prev { left: 10px; } .next { right: 10px; }
 
-    /* Animação Automática */
-    .animar:hover .gallery-container { animation: hover-slide-3 8s ease-in-out infinite; }
-    @keyframes hover-slide-3 { 
-      0%, 15%, 100% { transform: translateX(0); } 
-      25%, 45% { transform: translateX(-100%); } 
-      55%, 85% { transform: translateX(-200%); } 
+    /* Animação */
+    .animar:hover .gallery-container { animation: hover-slide-3 7s ease-in-out infinite; }
+    @keyframes hover-slide-3 {
+      0%, 20%, 100% { transform: translateX(0); }
+      30%, 50% { transform: translateX(-100%); }
+      60%, 80% { transform: translateX(-200%); }
     }
 
-    /* --- SELECTS E BOTÕES --- */
-    .opcoes-produto { margin: 15px 0 25px 0; text-align: left; }
-    .opcoes-produto label { font-size: 0.75rem; color: var(--ouro); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 8px; margin-left: 5px; }
-    .select-bloom { width: 100%; padding: 12px; border: 1.5px solid #f0f0f0; border-radius: 15px; background: #fafafa; font-family: inherit; font-size: 0.9rem; color: #444; cursor: pointer; transition: 0.3s; }
-    .select-bloom:focus { border-color: var(--ouro); outline: none; background: #fff; }
+    /* --- OPÇÕES E BOTÕES --- */
+    .opcoes-produto { margin: 10px 0 20px 0; text-align: left; }
+    .opcoes-produto label { font-size: 0.7rem; color: var(--ouro); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 5px; }
+    .select-bloom { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 12px; background: #fdfdfd; font-family: inherit; font-size: 0.85rem; color: #555; outline: none; cursor: pointer; }
 
-    .preco { display: block; font-size: 1.5rem; font-weight: bold; color: var(--ouro); margin-bottom: 20px; }
-    .btn { display: block; padding: 15px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 50px; font-size: 0.85rem; font-weight: bold; letter-spacing: 1px; transition: 0.3s; }
-    .btn:hover { background: var(--ouro); transform: scale(1.02); }
+    .preco { display: block; font-size: 1.3rem; font-weight: bold; color: var(--ouro); margin-bottom: 15px; }
+    .btn { display: block; padding: 12px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 50px; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
+    .btn:hover { background: var(--ouro); }
 
     /* --- FOOTER --- */
-    footer { text-align: center; padding: 80px 20px; background: #fff; border-top: 1px solid #eee; margin-top: 60px; }
-    footer h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; }
-    .contato-item { margin: 10px 0; font-size: 1rem; color: #666; }
-    .contato-item strong { color: var(--dark); }
-    .insta-link { display: inline-block; margin-top: 20px; color: var(--dark); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--ouro); padding-bottom: 3px; transition: 0.3s; }
-    .insta-link:hover { color: var(--ouro); }
+    footer { text-align: center; padding: 60px 20px; background: #fff; border-top: 1px solid #eee; margin-top: 40px; }
+    footer h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
+    .insta-link { color: var(--dark); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--ouro); }
   </style>
 </head>
 <body>
@@ -77,7 +67,7 @@
   <h1>Bloom</h1>
   <p>by Poly</p>
   <section class="sobre">
-    <h4>A Nossa Essência</h4>
+    <h4>Sobre nós</h4>
     <p>Bloom by Poly nasce da vontade de transformar espaços através da estética: composições que elevam o ambiente e criam presença. As nossas velas são pensadas como peças decorativas, criadas artesanalmente, onde a forma, a textura e a harmonia visual têm o papel principal.</p>
   </section>
 </header>
@@ -87,7 +77,7 @@
     <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/1_CaixaMadeira.jpg"></div></div>
     <h3>Bouquet em Caixa de Madeira</h3>
     <span class="preco">14,95€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Gostaria de encomendar o Bouquet em Caixa de Madeira." class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Madeira." class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-caixa" class="card animar">
@@ -102,15 +92,15 @@
     </div>
     <h3>Bouquet em Caixa de Cartão</h3>
     <div class="opcoes-produto">
-      <label>Tamanho Disponível:</label>
+      <label>Tamanho:</label>
       <select class="select-bloom" onchange="mudarFotoCaixa(this.value)">
-        <option value="Selecionar" selected>Escolher Tamanho (Galeria Livre)</option>
+        <option value="Selecionar" selected>Selecionar</option>
         <option value="Medio">Médio</option>
         <option value="Pequeno">Pequeno</option>
       </select>
     </div>
     <span class="preco">17,95€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Gostaria de encomendar o Bouquet em Caixa de Cartão." class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Cartão." class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-jarra" class="card animar">
@@ -125,15 +115,15 @@
     </div>
     <h3>Bouquet em Jarra</h3>
     <div class="opcoes-produto">
-      <label>Opções de Jarra:</label>
+      <label>Tipo de Jarra:</label>
       <select class="select-bloom" onchange="mudarFotoJarra(this.value)">
-        <option value="Selecionar" selected>Explorar Modelos</option>
-        <option value="Normal">Jarra Clássica</option>
-        <option value="Personalizada">Parceria Luís Chaves (Exclusivo)</option>
+        <option value="Selecionar" selected>Selecionar</option>
+        <option value="Normal">Normal</option>
+        <option value="Personalizada">Personalizada (Parceria Luís Chaves)</option>
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Gostaria de saber mais sobre os Bouquets em Jarra." class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Jarra." class="btn">ENCOMENDAR</a>
   </div>
 
   <div id="card-vaso" class="card animar">
@@ -148,27 +138,41 @@
     </div>
     <h3>Bouquet Miniatura</h3>
     <div class="opcoes-produto">
-      <label>Base Escolhida:</label>
+      <label>Suporte:</label>
       <select class="select-bloom" onchange="mudarFotoVaso(this.value)">
-        <option value="Selecionar" selected>Ver todos os suportes</option>
-        <option value="Vaso">Vaso Metálico</option>
-        <option value="Cesto">Cesto Artesanal</option>
+        <option value="Selecionar" selected>Selecionar</option>
+        <option value="Vaso">Vaso metálico</option>
+        <option value="Cesto">Cesto</option>
       </select>
     </div>
     <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Gostaria de encomendar um Bouquet Miniatura." class="btn">ENCOMENDAR VIA WHATSAPP</a>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet Miniatura." class="btn">ENCOMENDAR</a>
+  </div>
+
+  <div class="card">
+    <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/5_TacaCeramica.jpg"></div></div>
+    <h3>Vela em Taça Cerâmica</h3>
+    <span class="preco">10,90€</span>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar a Vela em Taça Cerâmica." class="btn">ENCOMENDAR</a>
+  </div>
+  <div class="card">
+    <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/6_FloresRamo.jpg"></div></div>
+    <h3>Ramos de Flores</h3>
+    <span class="preco">5,00€</span>
+    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar Ramos de Flores." class="btn">ENCOMENDAR</a>
   </div>
 </main>
 
 <footer>
-  <h4>Contacte a Bloom by Poly</h4>
-  <p class="contato-item">WhatsApp: <strong>+351 963 404 327</strong></p>
-  <p class="contato-item">E-mail: <strong>poly.bloom27@gmail.com</strong></p>
-  <p style="margin-top: 30px; font-size: 0.8rem; color: #999;">&copy; 2026 Bloom by Poly. Todos os direitos reservados.</p>
-  <a href="https://www.instagram.com/poly.bloom27" target="_blank" class="insta-link">Seguir no Instagram @poly.bloom27</a>
+  <h4>Contacte-nos</h4>
+  <p>Ficou com dúvidas ou pretende algo personalizado?</p>
+  <p>WhatsApp: <strong>+351 963 404 327</strong></p>
+  <p>Email: <strong>poly.bloom27@gmail.com</strong></p>
+  <a href="https://www.instagram.com/poly.bloom27" target="_blank" class="insta-link">@poly.bloom27</a>
 </footer>
 
 <script>
+  // Função para as setas funcionarem
   function moveGallery(id, direction) {
     const galeria = document.getElementById(id);
     const card = galeria.closest('.card');
@@ -184,6 +188,7 @@
     galeria.style.transform = `translateX(-${newIndex * 100}%)`;
   }
 
+  // Funções dos selects
   function mudarFotoCaixa(v) {
     const g = document.getElementById('galeria-caixa');
     const c = document.getElementById('card-caixa');
