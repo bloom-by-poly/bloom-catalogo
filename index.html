@@ -9,7 +9,7 @@
     body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--dark); background-color: var(--bege); margin: 0; }
 
     /* --- HEADER & SOBRE NÓS --- */
-    header { text-align: center; padding: 60px 20px; background: #fff; border-bottom: 1px solid #eee; }
+    header { text-align: center; padding: 60px 20px; background: #fff; border-bottom: 1px solid #b8a5a5; }
     header h1 { font-size: 3.5rem; margin: 0; letter-spacing: 6px; font-weight: 300; text-transform: uppercase; }
     header p.sub { margin: 0; color: #888; letter-spacing: 3px; }
 
@@ -117,7 +117,7 @@
       desc: "Bouquet sofisticado em caixa de cartão premium.",
       fotos: ["Fotos/2_CaixaCartao.jpg", "Fotos/10_CaixaCartaoCorrente.jpg", "Fotos/13_CaixaCartaoPeq.jpg"],
       opcoes: [
-        { nome: "Selecionar", ref: "BOUQ-CART-GERAL", fotoIdx: 0 },
+        { nome: "Selecionar", ref: "", fotoIdx: 0 },
         { nome: "Médio", ref: "BOUQ-CART-MED", fotoIdx: 0 },
         { nome: "Pequeno", ref: "BOUQ-CART-PEQ", fotoIdx: 2 }
       ]
@@ -127,7 +127,7 @@
       desc: "Arranjo delicado em jarra de vidro.",
       fotos: ["Fotos/3_ArranjoJarra.jpg", "Fotos/9_JarraPers_II.jpg", "Fotos/8_JarraPersonalizada.jpg"],
       opcoes: [
-        { nome: "Selecionar", ref: "BOUQ-JAR-GERAL", fotoIdx: 0 },
+        { nome: "Selecionar", ref: "", fotoIdx: 0 },
         { nome: "Normal", ref: "BOUQ-JAR-NORM", fotoIdx: 0 },
         { nome: "Personalizada", ref: "BOUQ-JAR-PERS", fotoIdx: 1 }
       ]
@@ -137,7 +137,7 @@
       desc: "Pequenos detalhes, grande impacto.",
       fotos: ["Fotos/4_MiniVasoMetal.jpg", "Fotos/12_MiniaturaCesto.jpg", "Fotos/11_Miniaturas.jpg"],
       opcoes: [
-        { nome: "Selecionar", ref: "MINI-GERAL", fotoIdx: 0 },
+        { nome: "Selecionar", ref: "", fotoIdx: 0 },
         { nome: "Vaso Metálico", ref: "MINI-VASO-MET", fotoIdx: 0 },
         { nome: "Cesto Artesanal", ref: "MINI-CESTO-ART", fotoIdx: 1 }
       ]
@@ -194,15 +194,26 @@
     const sel = document.getElementById('m-select');
     let ref = curProd.ref;
     let nome = curProd.titulo;
+    let textoWpp = "";
+
     if(curProd.opcoes.length > 0) {
       const opt = curProd.opcoes[sel.value];
-      ref = opt.ref;
-      if(opt.nome !== "Selecionar") nome += " (" + opt.nome + ")";
+      if(opt.nome === "Selecionar") {
+        ref = "---";
+        textoWpp = `Olá! Gostaria de mais informações sobre: ${nome}`;
+      } else {
+        ref = opt.ref;
+        nome += " (" + opt.nome + ")";
+        textoWpp = `Olá! Gostaria de encomendar o produto: ${nome} [Ref: ${ref}]`;
+      }
       curImgIdx = opt.fotoIdx;
       updateGallery();
+    } else {
+      textoWpp = `Olá! Gostaria de encomendar o produto: ${nome} [Ref: ${ref}]`;
     }
+
     document.getElementById('m-ref').innerText = "Referência: " + ref;
-    document.getElementById('m-link').href = `https://wa.me/351963404327?text=Olá! Gostaria de encomendar o produto: ${nome} [Ref: ${ref}]`;
+    document.getElementById('m-link').href = `https://wa.me/351963404327?text=${encodeURIComponent(textoWpp)}`;
   }
 
   function updateGallery() {
