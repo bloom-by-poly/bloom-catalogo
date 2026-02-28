@@ -16,12 +16,13 @@
     .sobre { max-width: 800px; margin: 40px auto 0; padding: 0 20px; text-align: center; }
     .sobre h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 0.9rem; }
     .sobre p { font-size: 1.1rem; color: #555; line-height: 1.8; }
+    .aviso-ilustrativo { margin-top: 20px; font-style: italic; color: #888; font-size: 0.9rem; }
 
     /* --- VITRINE --- */
     .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
     .card { background: #fff; border-radius: 25px; padding: 20px; text-align: center; cursor: pointer; transition: 0.4s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
     .card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(184, 146, 106, 0.2); }
-    .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; }
+    .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; background: #eee; }
     .card h3 { font-size: 1.2rem; margin: 20px 0 5px; font-weight: 400; }
     .card .preco-vitrine { color: var(--ouro); font-weight: bold; font-size: 1.1rem; }
 
@@ -32,9 +33,9 @@
 
     .close { position: absolute; right: 20px; top: 20px; font-size: 30px; cursor: pointer; z-index: 3000; color: #333; background: rgba(255,255,255,0.9); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 
-    .modal-left { flex: 1.2; background: #000; position: relative; height: auto; min-height: 500px; overflow: hidden; }
+    .modal-left { flex: 1.2; background: #f4f4f4; position: relative; height: auto; min-height: 500px; overflow: hidden; }
     .modal-gallery { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease; }
-    .modal-gallery img { width: 100%; min-width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+    .modal-gallery img { width: 100%; min-width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; background: #f4f4f4; }
 
     .modal-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 15px; box-sizing: border-box; transform: translateY(-50%); z-index: 50; }
     .m-btn { background: rgba(255,255,255,0.9); border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; color: var(--ouro); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
@@ -48,7 +49,6 @@
 
     .select-modal { width: 100%; padding: 12px; border-radius: 12px; border: 1.5px solid #eee; margin-bottom: 15px; font-family: inherit; font-size: 0.95rem; cursor: pointer; }
     .btn-wpp { background: var(--dark); color: #fff; text-decoration: none; padding: 18px; text-align: center; border-radius: 60px; font-weight: bold; transition: 0.3s; font-size: 0.95rem; margin-top: auto; }
-    .btn-wpp:hover { background: var(--ouro); }
 
     .sub-opcoes-label { font-size: 0.75rem; font-weight: bold; color: var(--ouro); display: block; margin-bottom: 5px; text-transform: uppercase; }
 
@@ -58,18 +58,11 @@
 
     /* --- CONTACTOS --- */
     footer { text-align: center; padding: 60px 20px; background: #fff; border-top: 1px solid #eee; margin-top: 20px; }
-    footer h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
-    footer p { margin: 5px 0; color: #555; }
-    .insta-link { display: inline-block; margin-top: 20px; color: var(--dark); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--ouro); }
 
-    /* --- AJUSTES MOBILE EXTREMOS --- */
     @media (max-width: 850px) {
       .modal-content { flex-direction: column; margin: 0; border-radius: 0; width: 100%; height: 100%; max-height: 100vh; }
       .modal-left { flex: none; height: 40vh; min-height: 300px; width: 100%; }
-      .modal-right { flex: 1; padding: 25px 20px; overflow-y: visible; }
-      .modal-right h2 { font-size: 1.5rem; }
-      header h1 { font-size: 2.2rem; }
-      .catalogo { padding: 20px; }
+      .modal-right { padding: 25px 20px; overflow-y: visible; }
     }
   </style>
 </head>
@@ -80,7 +73,8 @@
   <p class="sub">by Poly</p>
   <section class="sobre">
     <h4>Sobre nós</h4>
-    <p>Bloom by Poly nasce da vontade de transformar espaços através da estética: composições que elevam o ambiente e criam presença.</p>
+    <p>Bloom by Poly nasce da vontade de transformar espaços através da estética: composições que elevam o ambiente e criam presença. As nossas velas são pensadas como peças decorativas, criadas artesanalmente, onde a forma, a textura e a harmonia visual têm o papel principal.</p>
+    <p class="aviso-ilustrativo">NOTA: As imagens apresentadas para os nossos produtos são meramente ilustrativas.</p>
   </section>
 </header>
 
@@ -120,51 +114,52 @@
 
 <section class="nota-geral">
   <h4>Notas importantes antes de encomendar:</h4>
-  <p>"Poderá escolher, para todos os produtos, a combinação de cores e essências, limitado ao stock existente."</p>
+  <p>Poderá escolher, para todos os produtos, a combinação de cores e essências, limitado ao stock existente. Mais informações, contacte-nos através dos meios indicados abaixo:</p>
 </section>
 
 <footer>
   <h4>Contacte-nos</h4>
   <p>WhatsApp: <strong>+351 963 404 327</strong></p>
-  <a href="https://www.instagram.com/poly.bloom27" target="_blank" class="insta-link">@poly.bloom27</a>
+  <p>Email: <strong>poly.bloom27@gmail.com</strong></p>
+  <a href="https://www.instagram.com/poly.bloom27" target="_blank" style="text-decoration:none; color:var(--dark); font-weight:bold;">@poly.bloom27</a>
 </footer>
 
 <script>
   const notaGeralVelas = "NOTA: Para queimar, deve retirar as velas e colocar em recipiente próprio.";
 
   const produtos = [
-    { id: 0, titulo: "Bouquet em caixa de Madeira", preco: "14,95€", ref: "BOUQ-MAD-01", desc: "Composição elegante em caixa de madeira rústica.", nota: notaGeralVelas, fotos: ["Fotos/1_CaixaMadeira.jpg"], opcoes: [] },
-    { id: 1, titulo: "Bouquet em Caixa de Cartão", preco: "17,95€", ref: "BOUQ-CART-MED", desc: "Bouquet sofisticado em caixa de cartão premium.", nota: notaGeralVelas, fotos: ["Fotos/2_CaixaCartao.jpg", "Fotos/10_CaixaCartaoCorrente.jpg", "Fotos/13_CaixaCartaoPeq.jpg"], opcoes: [
-        { nome: "Selecionar", ref: "", fotoIdx: 0 },
-        { nome: "Médio", ref: "BOUQ-CART-MED", subTitulo: "Tipo de caixa pretendido", subOpcoes: [
-            { nome: "Caixa redonda", ref: "BOUQ-CART-RED", fotoIdx: 0 },
-            { nome: "Caixa retangular com correntes douradas", ref: "BOUQ-CART-COR", fotoIdx: 1 }
+    { id: 0, titulo: "Bouquet em caixa de Madeira", preco: "15,50€", ref: "BOUQ-MAD-01", desc: "Composição elegante em caixa de madeira rústica.", nota: notaGeralVelas, fotos: ["Fotos/1_CaixaMadeira.jpg"], opcoes: [] },
+    { id: 1, titulo: "Bouquet em Caixa de Cartão", preco: "Vários Preços", ref: "BOUQ-CART-MED", desc: "Bouquet sofisticado em caixa de cartão premium.", nota: notaGeralVelas, fotos: ["Fotos/2_CaixaCartao.jpg", "Fotos/10_CaixaCartaoCorrente.jpg", "Fotos/13_CaixaCartaoPeq.jpg"], opcoes: [
+        { nome: "Selecionar", ref: "", preco: "14,50€ - 19,90€", fotoIdx: 0 },
+        { nome: "Médio", ref: "BOUQ-CART-MED", preco: "19,90€", subTitulo: "Tipo de caixa pretendido", subOpcoes: [
+            { nome: "Caixa redonda", ref: "BOUQ-CART-RED", preco: "19,90€", fotoIdx: 0 },
+            { nome: "Caixa retangular com correntes douradas", ref: "BOUQ-CART-COR", preco: "19,90€", fotoIdx: 1 }
           ]},
-        { nome: "Pequeno", ref: "BOUQ-CART-PEQ", subTitulo: "Cor pretendida", subOpcoes: [
-            { nome: "Cor de rosa", ref: "BOUQ-CART-PK", fotoIdx: 2 },
-            { nome: "Branco", ref: "BOUQ-CART-WT", fotoIdx: 2 }
+        { nome: "Pequeno", ref: "BOUQ-CART-PEQ", preco: "14,50€", subTitulo: "Cor pretendida", subOpcoes: [
+            { nome: "Cor de rosa", ref: "BOUQ-CART-PK", preco: "14,50€", fotoIdx: 2 },
+            { nome: "Branco", ref: "BOUQ-CART-WT", preco: "14,50€", fotoIdx: 2 }
           ]}
       ]},
-    { id: 2, titulo: "Bouquet em Jarra", preco: "9,90€", ref: "BOUQ-JAR-NORM", desc: "Arranjo delicado em jarra de vidro.", nota: notaGeralVelas, fotos: ["Fotos/3_ArranjoJarra.jpg", "Fotos/9_JarraPers_II.jpg", "Fotos/8_JarraPersonalizada.jpg"], opcoes: [
-        { nome: "Selecionar", ref: "", fotoIdx: 0 },
-        { nome: "Normal", ref: "BOUQ-JAR-NORM", fotoIdx: 0 },
-        { nome: "Personalizada", ref: "BOUQ-JAR-PERS", fotoIdx: 1 }
+    { id: 2, titulo: "Bouquet em Jarra", preco: "Vários Preços", ref: "BOUQ-JAR-NORM", desc: "Arranjo delicado em jarra de vidro.", nota: notaGeralVelas, fotos: ["Fotos/3_ArranjoJarra.jpg", "Fotos/9_JarraPers_II.jpg", "Fotos/8_JarraPersonalizada.jpg"], opcoes: [
+        { nome: "Selecionar", ref: "", preco: "7,00€ - 15,00€", fotoIdx: 0 },
+        { nome: "Normal", ref: "BOUQ-JAR-NORM", preco: "7,00€", fotoIdx: 0 },
+        { nome: "Personalizada", ref: "BOUQ-JAR-PERS", preco: "15,00€", fotoIdx: 1 }
       ]},
-    { id: 3, titulo: "Bouquet Miniatura", preco: "9,90€", ref: "MINI-VASO-MET", desc: "Pequenos detalhes, grande impacto.", nota: notaGeralVelas, fotos: ["Fotos/4_MiniVasosMetal.jpg", "Fotos/12_MiniaturaCesto.jpg", "Fotos/11_Miniaturas.jpg"], opcoes: [
-        { nome: "Selecionar", ref: "", fotoIdx: 0 },
-        { nome: "Vaso Metálico", ref: "MINI-VASO-MET", fotoIdx: 0 },
-        { nome: "Cesto Artesanal", ref: "MINI-CESTO-ART", fotoIdx: 1 }
+    { id: 3, titulo: "Bouquet Miniatura", preco: "4,50€", ref: "MINI-VASO-MET", desc: "Pequenos detalhes, grande impacto.", nota: notaGeralVelas, fotos: ["Fotos/4_MiniVasosMetal.jpg", "Fotos/12_MiniaturaCesto.jpg", "Fotos/11_Miniaturas.jpg"], opcoes: [
+        { nome: "Selecionar", ref: "", preco: "4,50€", fotoIdx: 0 },
+        { nome: "Vaso Metálico", ref: "MINI-VASO-MET", preco: "4,50€", fotoIdx: 0 },
+        { nome: "Cesto Artesanal", ref: "MINI-CESTO-ART", preco: "4,50€", fotoIdx: 1 }
       ]},
-    { id: 4, titulo: "Vela em Taça Cerâmica", preco: "10,90€", ref: "VELA-TACA-CER", desc: "Vela artesanal fundida em taça de cerâmica.", nota: "NOTA: Para queimar, deverá retirar as flores secas.", fotos: ["Fotos/5_TacaCeramica.jpg"], opcoes: [] },
-    { id: 5, titulo: "Ramos de Flores", preco: "5,00€", ref: "RAMO-FLOR-IND", desc: "Ramos individuais. Composto por 3 flores.", nota: notaGeralVelas, fotos: ["Fotos/6_FloresRamo.jpg"], opcoes: [] },
-    { id: 6, titulo: "Velas Individuais", preco: "Sob Consulta", ref: "VELA-IND-PERS", desc: "Velas personalizadas para eventos.", nota: notaGeralVelas, fotos: ["Fotos/7_VelasIndividuaisPers.jpg"], opcoes: [] }
+    { id: 4, titulo: "Vela em Taça Cerâmica", preco: "9,90€", ref: "VELA-TACA-CER", desc: "Vela artesanal fundida em taça de cerâmica.", nota: "NOTA: Para queimar, deverá retirar as flores secas, podendo acender a vela no mesmo recipiente.", fotos: ["Fotos/5_TacaCeramica.jpg"], opcoes: [] },
+    { id: 5, titulo: "Ramos de Flores", preco: "6,50€", ref: "RAMO-FLOR-IND", desc: "Ramos individuais de velas florais. O ramo é composto por um total de 3 flores.", nota: notaGeralVelas, fotos: ["Fotos/6_FloresRamo.jpg"], opcoes: [] },
+    { id: 6, titulo: "Velas Individuais", preco: "4,50€", ref: "VELA-IND-PERS", desc: "Velas personalizadas para eventos ou ofertas.", nota: notaGeralVelas, fotos: ["Fotos/7_VelasIndividuaisPers.jpg"], opcoes: [] }
   ];
 
   let curProd = null; let curImgIdx = 0;
   const vitrine = document.getElementById('vitrine');
   produtos.forEach(p => {
     const card = document.createElement('div'); card.className = 'card'; card.onclick = () => openModal(p.id);
-    card.innerHTML = `<img src="${p.fotos[0]}"><h3>${p.titulo}</h3><p class="preco-vitrine">${p.preco}</p>`;
+    card.innerHTML = `<img src="${p.fotos[0]}" onerror="this.src='https://placehold.co/600x600?text=Imagem+indisponível'"><h3>${p.titulo}</h3><p class="preco-vitrine">${p.preco}</p>`;
     vitrine.appendChild(card);
   });
 
@@ -175,7 +170,7 @@
     document.getElementById('m-nota').innerText = curProd.nota;
     document.getElementById('m-preco').innerText = curProd.preco;
     const gal = document.getElementById('modalGallery');
-    gal.innerHTML = curProd.fotos.map(f => `<img src="${f}">`).join('');
+    gal.innerHTML = curProd.fotos.map(f => `<img src="${f}" onerror="this.src='https://placehold.co/600x600?text=Imagem+indisponível'">`).join('');
     document.getElementById('nav-buttons').style.display = curProd.fotos.length > 1 ? 'flex' : 'none';
     const sel = document.getElementById('m-select');
     document.getElementById('m-sub-opcoes-cont').style.display = 'none';
@@ -192,9 +187,11 @@
     const sel = document.getElementById('m-select');
     const subSelCont = document.getElementById('m-sub-opcoes-cont');
     const subSel = document.getElementById('m-sub-select');
-    let ref = curProd.ref; let nome = curProd.titulo; let textoWpp = "";
+    let ref = curProd.ref; let nome = curProd.titulo; let preco = curProd.preco; let textoWpp = "";
+
     if(curProd.opcoes.length > 0) {
       const opt = curProd.opcoes[sel.value];
+      preco = opt.preco;
       if(opt.subOpcoes) {
         subSelCont.style.display = 'block';
         document.getElementById('m-sub-label').innerText = opt.subTitulo;
@@ -203,15 +200,16 @@
           subSel.dataset.p = sel.value;
         }
         const subOpt = opt.subOpcoes[subSel.value];
-        ref = subOpt.ref; nome += ` - ${opt.nome} (${subOpt.nome})`; curImgIdx = subOpt.fotoIdx;
+        ref = subOpt.ref; preco = subOpt.preco; nome += ` - ${opt.nome} (${subOpt.nome})`; curImgIdx = subOpt.fotoIdx;
       } else {
         subSelCont.style.display = 'none';
-        if(opt.nome === "Selecionar") { ref = "---"; textoWpp = `Mais info: ${nome}`; curImgIdx = opt.fotoIdx; }
+        if(opt.nome === "Selecionar") { ref = "---"; textoWpp = `Olá! Gostaria de mais informações sobre: ${nome}`; curImgIdx = opt.fotoIdx; }
         else { ref = opt.ref; nome += ` (${opt.nome})`; curImgIdx = opt.fotoIdx; }
       }
     }
     updateGallery();
-    if(!textoWpp) textoWpp = `Encomenda: ${nome} [Ref: ${ref}]`;
+    document.getElementById('m-preco').innerText = preco;
+    if(!textoWpp) textoWpp = `Olá! Gostaria de encomendar o produto: ${nome} [Ref: ${ref}]`;
     document.getElementById('m-ref').innerText = `Ref: ${ref}`;
     document.getElementById('m-link').href = `https://wa.me/351963404327?text=${encodeURIComponent(textoWpp)}`;
   }
