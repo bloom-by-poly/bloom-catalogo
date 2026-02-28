@@ -3,143 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bloom by Poly | Catálogo Oficial</title>
+  <title>Bloom by Poly | Catálogo Profissional</title>
   <style>
     :root { --ouro: #b8926a; --bege: #fdfaf8; --dark: #333; }
     body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--dark); background-color: var(--bege); margin: 0; }
+
+    /* --- HEADER & SOBRE NÓS --- */
     header { text-align: center; padding: 60px 20px; background: #fff; border-bottom: 1px solid #eee; }
-    header h1 { font-size: 3rem; margin: 0; letter-spacing: 4px; font-weight: 300; text-transform: uppercase; }
-    .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
-    .card { background: #fff; border-radius: 30px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-    .gallery-wrapper { position: relative; width: 100%; height: 350px; border-radius: 25px; margin-bottom: 15px; overflow: hidden; background: #f9f9f9; }
-    .gallery-container { display: flex; width: 100%; height: 100%; transition: transform 0.6s ease-in-out; }
-    .gallery-container img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; border-radius: 25px; }
-    .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.8); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--ouro); z-index: 10; display: flex; align-items: center; justify-content: center; }
-    .prev { left: 10px; } .next { right: 10px; }
-    .animar:hover .gallery-container { animation: hover-slide-3 7s ease-in-out infinite; }
-    @keyframes hover-slide-3 { 0%, 20%, 100% { transform: translateX(0); } 30%, 50% { transform: translateX(-100%); } 60%, 80% { transform: translateX(-200%); } }
-    .opcoes-produto { margin: 10px 0 20px 0; text-align: left; }
-    .select-bloom { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 12px; background: #fdfdfd; font-family: inherit; font-size: 0.85rem; color: #555; outline: none; }
-    .preco { display: block; font-size: 1.3rem; font-weight: bold; color: var(--ouro); margin-bottom: 15px; }
-    .btn { display: block; padding: 12px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
-    footer { text-align: center; padding: 60px 20px; background: #fff; border-top: 1px solid #eee; margin-top: 40px; }
+    header h1 { font-size: 3.5rem; margin: 0; letter-spacing: 6px; font-weight: 300; text-transform: uppercase; }
+    header p.sub { margin: 0; color: #888; letter-spacing: 3px; }
+
+    .sobre { max-width: 800px; margin: 40px auto 0; padding: 0 20px; text-align: center; }
+    .sobre h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 0.9rem; }
+    .sobre p { font-size: 1.1rem; color: #555; line-height: 1.8; }
+
+    /* --- VITRINE --- */
+    .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
+    .card { background: #fff; border-radius: 25px; padding: 20px; text-align: center; cursor: pointer; transition: 0.4s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(184, 146, 106, 0.2); }
+    .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; }
+    .card h3 { font-size: 1.2rem; margin: 20px 0 5px; font-weight: 400; }
+    .card .preco-vitrine { color: var(--ouro); font-weight: bold; font-size: 1.1rem; }
+
+    /* --- MODAL --- */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
+    .modal-content { background: #fff; margin: 2% auto; width: 95%; max-width: 1100px; border-radius: 35px; display: flex; flex-wrap: wrap; position: relative; overflow: hidden; animation: slideUp 0.4s ease; }
+    @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+    .close { position: absolute; right: 25px; top: 20px; font-size: 35px; cursor: pointer; z-index: 100; color: #333; background: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+    .modal-left { flex: 1.2; min-width: 350px; background: #000; position: relative; height: 600px; overflow: hidden; }
+    .modal-gallery { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease; }
+    .modal-gallery img { width: 100%; min-width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+
+    .modal-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; box-sizing: border-box; transform: translateY(-50%); z-index: 50; }
+    .m-btn { background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 24px; color: var(--ouro); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+
+    .modal-right { flex: 1; min-width: 350px; padding: 50px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
+    .modal-right h2 { font-size: 2rem; margin-bottom: 15px; color: var(--dark); }
+    .modal-right p { font-size: 1.05rem; color: #666; margin-bottom: 30px; line-height: 1.6; }
+    .ref-tag { font-size: 0.8rem; background: #f0f0f0; padding: 6px 12px; border-radius: 6px; color: #555; display: inline-block; margin-bottom: 20px; font-weight: bold; letter-spacing: 1px; }
+
+    .select-modal { width: 100%; padding: 15px; border-radius: 12px; border: 1.5px solid #eee; margin-bottom: 30px; font-family: inherit; font-size: 1rem; cursor: pointer; }
+    .btn-wpp { background: var(--dark); color: #fff; text-decoration: none; padding: 20px; text-align: center; border-radius: 60px; font-weight: bold; transition: 0.3s; font-size: 1rem; }
+    .btn-wpp:hover { background: var(--ouro); }
+
+    /* --- CONTACTOS --- */
+    footer { text-align: center; padding: 80px 20px; background: #fff; border-top: 1px solid #eee; margin-top: 60px; }
+    footer h4 { color: var(--ouro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+    footer p { margin: 5px 0; color: #555; }
+    .insta-link { display: inline-block; margin-top: 20px; color: var(--dark); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--ouro); }
+
+    @media (max-width: 850px) {
+      .modal-content { flex-direction: column; margin: 0; border-radius: 0; width: 100%; height: 100%; }
+      .modal-left { height: 45vh; min-width: 100%; }
+      .modal-right { padding: 40px 25px; min-width: 100%; }
+    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>Bloom</h1>
-  <p>by Poly</p>
+  <p class="sub">by Poly</p>
+  <section class="sobre">
+    <h4>Sobre nós</h4>
+    <p>Bloom by Poly nasce da vontade de transformar espaços através da estética: composições que elevam o ambiente e criam presença. As nossas velas são pensadas como peças decorativas, criadas artesanalmente, onde a forma, a textura e a harmonia visual têm o papel principal.</p>
+  </section>
 </header>
 
-<main class="catalogo">
-  <div class="card">
-    <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/1_CaixaMadeira.jpg"></div></div>
-    <h3>Bouquet em Caixa de Madeira</h3>
-    <span class="preco">14,95€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Madeira" class="btn">ENCOMENDAR</a>
-  </div>
+<main class="catalogo" id="vitrine"></main>
 
-  <div class="card animar" id="card-caixa">
-    <div class="gallery-wrapper">
-      <button class="nav-btn prev" onclick="manualNav('galeria-caixa', -1)">&#10094;</button>
-      <div id="galeria-caixa" class="gallery-container">
-        <img src="Fotos/2_CaixaCartao.jpg" style="object-position: top;">
-        <img src="Fotos/10_CaixaCartaoCorrente.jpg" style="object-position: 80%;">
-        <img src="Fotos/13_CaixaCartaoPeq.jpg">
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-left">
+      <div class="modal-nav" id="nav-buttons">
+        <button class="m-btn" onclick="changeM(-1)">&#10094;</button>
+        <button class="m-btn" onclick="changeM(1)">&#10095;</button>
       </div>
-      <button class="nav-btn next" onclick="manualNav('galeria-caixa', 1)">&#10095;</button>
+      <div id="modalGallery" class="modal-gallery"></div>
     </div>
-    <h3>Bouquet em Caixa de Cartão</h3>
-    <div class="opcoes-produto">
-      <select class="select-bloom" onchange="mudarFoto('galeria-caixa', this.value, 'card-caixa')">
-        <option value="0">Selecionar / Médio</option>
-        <option value="2">Pequeno</option>
-      </select>
-    </div>
-    <span class="preco">17,95€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Caixa de Cartão" class="btn">ENCOMENDAR</a>
-  </div>
-
-  <div class="card animar" id="card-jarra">
-    <div class="gallery-wrapper">
-      <button class="nav-btn prev" onclick="manualNav('galeria-jarra', -1)">&#10094;</button>
-      <div id="galeria-jarra" class="gallery-container">
-        <img src="Fotos/3_ArranjoJarra.jpg">
-        <img src="Fotos/9_JarraPers_II.jpg">
-        <img src="Fotos/8_JarraPersonalizada.jpg">
+    <div class="modal-right">
+      <h2 id="m-titulo"></h2>
+      <p id="m-desc"></p>
+      <div id="m-opcoes-cont">
+        <label style="font-size: 0.8rem; font-weight: bold; color: var(--ouro); display: block; margin-bottom: 8px;">SELECIONE UMA OPÇÃO:</label>
+        <select id="m-select" class="select-modal" onchange="syncModal()"></select>
       </div>
-      <button class="nav-btn next" onclick="manualNav('galeria-jarra', 1)">&#10095;</button>
+      <div id="m-ref" class="ref-tag"></div>
+      <div id="m-preco" style="font-size: 1.8rem; color: var(--ouro); margin-bottom: 30px; font-weight: bold;"></div>
+      <a id="m-link" href="#" target="_blank" class="btn-wpp">ENCOMENDAR VIA WHATSAPP</a>
     </div>
-    <h3>Bouquet em Jarra</h3>
-    <div class="opcoes-produto">
-      <select class="select-bloom" onchange="mudarFoto('galeria-jarra', this.value, 'card-jarra')">
-        <option value="0">Selecionar / Normal</option>
-        <option value="2">Personalizada</option>
-      </select>
-    </div>
-    <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet em Jarra" class="btn">ENCOMENDAR</a>
   </div>
-
-  <div class="card animar" id="card-vaso">
-    <div class="gallery-wrapper">
-      <button class="nav-btn prev" onclick="manualNav('galeria-vaso', -1)">&#10094;</button>
-      <div id="galeria-vaso" class="gallery-container">
-        <img src="Fotos/4_MiniVasoMetal.jpg">
-        <img src="Fotos/12_MiniaturaCesto.jpg" style="object-position: 70%;">
-        <img src="Fotos/11_Miniaturas.jpg" style="object-position: 70%;">
-      </div>
-      <button class="nav-btn next" onclick="manualNav('galeria-vaso', 1)">&#10095;</button>
-    </div>
-    <h3>Bouquet Miniatura</h3>
-    <div class="opcoes-produto">
-      <select class="select-bloom" onchange="mudarFoto('galeria-vaso', this.value, 'card-vaso')">
-        <option value="0">Selecionar / Vaso</option>
-        <option value="1">Cesto</option>
-      </select>
-    </div>
-    <span class="preco">9,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar o Bouquet Miniatura" class="btn">ENCOMENDAR</a>
-  </div>
-
-  <div class="card">
-    <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/5_TacaCeramica.jpg"></div></div>
-    <h3>Vela em Taça Cerâmica</h3>
-    <span class="preco">10,90€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar a Vela em Taça Cerâmica" class="btn">ENCOMENDAR</a>
-  </div>
-
-  <div class="card">
-    <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/6_FloresRamo.jpg"></div></div>
-    <h3>Ramos de Flores</h3>
-    <span class="preco">5,00€</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero encomendar Ramos de Flores" class="btn">ENCOMENDAR</a>
-  </div>
-
-  <div class="card">
-    <div class="gallery-wrapper"><div class="gallery-container"><img src="Fotos/7_VelasIndividuaisPers.jpg"></div></div>
-    <h3>Velas Personalizáveis</h3>
-    <span class="preco">Preço sob consulta</span>
-    <a href="https://wa.me/351963404327?text=Olá! Quero informações sobre Velas Personalizadas" class="btn">ENCOMENDAR</a>
-  </div>
-</main>
+</div>
 
 <footer>
-  <p>WhatsApp: +351 963 404 327 | Instagram: @poly.bloom27</p>
+  <h4>Contacte-nos</h4>
+  <p>Ficou com alguma dúvida ou pretende uma encomenda personalizada?</p>
+  <p>WhatsApp: <strong>+351 963 404 327</strong></p>
+  <p>Email: <strong>poly.bloom27@gmail.com</strong></p>
+  <a href="https://www.instagram.com/poly.bloom27" target="_blank" class="insta-link">@poly.bloom27</a>
 </footer>
 
 <script>
-  function manualNav(id, dir) {
-    const g = document.getElementById(id);
-    g.closest('.card').classList.remove('animar');
-    let i = Math.abs((parseInt(g.style.transform.replace('translateX(-', '').replace('%)', '')) || 0) / 100);
-    g.style.transform = `translateX(-${((i + dir + 3) % 3) * 100}%)`;
+  const produtos = [
+    {
+      id: 0, titulo: "Bouquet em Caixa de Madeira", preco: "14,95€", ref: "BOUQ-MAD-01",
+      desc: "Composição elegante em caixa de madeira rústica.", fotos: ["Fotos/1_CaixaMadeira.jpg"], opcoes: []
+    },
+    {
+      id: 1, titulo: "Bouquet em Caixa de Cartão", preco: "17,95€", ref: "BOUQ-CART-MED",
+      desc: "Bouquet sofisticado em caixa de cartão premium.",
+      fotos: ["Fotos/2_CaixaCartao.jpg", "Fotos/10_CaixaCartaoCorrente.jpg", "Fotos/13_CaixaCartaoPeq.jpg"],
+      opcoes: [
+        { nome: "Selecionar", ref: "BOUQ-CART-GERAL", fotoIdx: 0 },
+        { nome: "Médio", ref: "BOUQ-CART-MED", fotoIdx: 0 },
+        { nome: "Pequeno", ref: "BOUQ-CART-PEQ", fotoIdx: 2 }
+      ]
+    },
+    {
+      id: 2, titulo: "Bouquet em Jarra", preco: "9,90€", ref: "BOUQ-JAR-NORM",
+      desc: "Arranjo delicado em jarra de vidro.",
+      fotos: ["Fotos/3_ArranjoJarra.jpg", "Fotos/9_JarraPers_II.jpg", "Fotos/8_JarraPersonalizada.jpg"],
+      opcoes: [
+        { nome: "Selecionar", ref: "BOUQ-JAR-GERAL", fotoIdx: 0 },
+        { nome: "Normal", ref: "BOUQ-JAR-NORM", fotoIdx: 0 },
+        { nome: "Personalizada", ref: "BOUQ-JAR-PERS", fotoIdx: 1 }
+      ]
+    },
+    {
+      id: 3, titulo: "Bouquet Miniatura", preco: "9,90€", ref: "MINI-VASO-MET",
+      desc: "Pequenos detalhes, grande impacto.",
+      fotos: ["Fotos/4_MiniVasoMetal.jpg", "Fotos/12_MiniaturaCesto.jpg", "Fotos/11_Miniaturas.jpg"],
+      opcoes: [
+        { nome: "Selecionar", ref: "MINI-GERAL", fotoIdx: 0 },
+        { nome: "Vaso Metálico", ref: "MINI-VASO-MET", fotoIdx: 0 },
+        { nome: "Cesto Artesanal", ref: "MINI-CESTO-ART", fotoIdx: 1 }
+      ]
+    },
+    {
+      id: 4, titulo: "Vela em Taça Cerâmica", preco: "10,90€", ref: "VELA-TACA-CER",
+      desc: "Vela artesanal fundida em taça de cerâmica.", fotos: ["Fotos/5_TacaCeramica.jpg"], opcoes: []
+    },
+    {
+      id: 5, titulo: "Ramos de Flores", preco: "5,00€", ref: "RAMO-FLOR-IND",
+      desc: "Ramos individuais de velas florais.", fotos: ["Fotos/6_FloresRamo.jpg"], opcoes: []
+    },
+    {
+      id: 6, titulo: "Velas Individuais", preco: "Sob Consulta", ref: "VELA-IND-PERS",
+      desc: "Velas personalizadas para eventos ou ofertas.", fotos: ["Fotos/7_VelasIndividuaisPers.jpg"], opcoes: []
+    }
+  ];
+
+  let curProd = null;
+  let curImgIdx = 0;
+
+  const vitrine = document.getElementById('vitrine');
+  produtos.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.onclick = () => openModal(p.id);
+    card.innerHTML = `<img src="${p.fotos[0]}"><h3>${p.titulo}</h3><p class="preco-vitrine">${p.preco}</p>`;
+    vitrine.appendChild(card);
+  });
+
+  function openModal(id) {
+    curProd = produtos[id];
+    curImgIdx = 0;
+    document.getElementById('m-titulo').innerText = curProd.titulo;
+    document.getElementById('m-desc').innerText = curProd.desc;
+    document.getElementById('m-preco').innerText = curProd.preco;
+    const gal = document.getElementById('modalGallery');
+    gal.innerHTML = curProd.fotos.map(f => `<img src="${f}">`).join('');
+    document.getElementById('nav-buttons').style.display = curProd.fotos.length > 1 ? 'flex' : 'none';
+    const selCont = document.getElementById('m-opcoes-cont');
+    const sel = document.getElementById('m-select');
+    if(curProd.opcoes.length > 0) {
+      selCont.style.display = 'block';
+      sel.innerHTML = curProd.opcoes.map((o, i) => `<option value="${i}">${o.nome}</option>`).join('');
+    } else {
+      selCont.style.display = 'none';
+    }
+    syncModal();
+    document.getElementById('productModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
   }
-  function mudarFoto(id, val, cardId) {
-    document.getElementById(cardId).classList.remove('animar');
-    document.getElementById(id).style.transform = `translateX(-${val * 100}%)`;
+
+  function syncModal() {
+    const sel = document.getElementById('m-select');
+    let ref = curProd.ref;
+    let nome = curProd.titulo;
+    if(curProd.opcoes.length > 0) {
+      const opt = curProd.opcoes[sel.value];
+      ref = opt.ref;
+      if(opt.nome !== "Selecionar") nome += " (" + opt.nome + ")";
+      curImgIdx = opt.fotoIdx;
+      updateGallery();
+    }
+    document.getElementById('m-ref').innerText = "Referência: " + ref;
+    document.getElementById('m-link').href = `https://wa.me/351963404327?text=Olá! Gostaria de encomendar o produto: ${nome} [Ref: ${ref}]`;
   }
+
+  function updateGallery() {
+    document.getElementById('modalGallery').style.transform = `translateX(-${curImgIdx * 100}%)`;
+  }
+
+  function changeM(dir) {
+    curImgIdx = (curImgIdx + dir + curProd.fotos.length) % curProd.fotos.length;
+    updateGallery();
+  }
+
+  function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  window.onclick = (e) => { if(e.target.className === 'modal') closeModal(); }
 </script>
 </body>
 </html>
